@@ -1,0 +1,6 @@
+<h1>Editing Resturant</h1>
+
+<%=  render 'form', resturant: @resturant %>
+
+<button type="button" class="btn btn-light"><%= sanitize link_to 'Show', @resturant %></button> |
+<button type="button" class="btn btn-light"><%= sanitize link_to 'Back', resturants_path %></button>

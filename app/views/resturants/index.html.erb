@@ -1,0 +1,32 @@
+<div class="row">
+<h1>Resturants:</h1>
+</div>
+
+
+    <% @resturants.each do |resturant| %>
+    <div class="row">
+      <div class="col">
+        <div class="card">
+          <h5 class="card-header"><%= resturant.name%></h5>
+          <div class="card-body">
+            
+              <button type="button" class="btn btn-success"><%= sanitize link_to 'Reviews', resturant_path(resturant), class: 'link-to-text-color' %></button>
+              <% if user_signed_in? %>
+              <div class="btn-group" role="group" aria-label="Basic example">
+               <button type="button" class="btn btn-warning"><%= sanitize link_to 'Edit', edit_resturant_path(resturant) %></button>
+               <button type="button" class="btn btn-danger"><%= sanitize link_to 'Delete', resturant, method: :delete, data: { confirm: 'Are you sure?' } %></button>
+            </div> 
+            <% end %>
+          </div>
+        </div>  
+      </div>
+    </div>
+    <% end %>
+
+
+<div class="row">
+<%# create new resturant %>
+<% if user_signed_in? %>
+  <button type="button" class="btn btn-light btn-lg"><%= sanitize link_to 'Add Resturant', new_resturant_path %></button>
+<% end %>
+</div>

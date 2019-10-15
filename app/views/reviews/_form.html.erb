@@ -1,0 +1,21 @@
+<%# used in edit, new %>
+
+<% if user_signed_in? %>
+  <%= simple_form_for([@resturant, @resturant.reviews.build]) do |f| %>
+    <%=  f.error_notification %>
+    <%=   f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+    <div class="form-inputs">
+      <span class=""></span><%= f.input :comment,
+        required: true,
+        autofocus: true
+       %>
+      <%# <%= f.input :rating %> <%#%>
+    </div>
+    <div class="form-actions">
+      <button type="button" class="btn btn-light"><%= f.button :submit %></button>
+    </div>
+  <% end %>
+<% else %>
+    <button type="button" class="btn btn-light"><%= sanitize link_to 'BACK: Try Again Next Time', resturants_path %></button>
+<% end %>

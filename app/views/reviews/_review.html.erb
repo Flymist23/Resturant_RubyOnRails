@@ -1,0 +1,12 @@
+<div class="conatiner border rounded">
+    <p class="text-center"><%= sanitize review.comment %></p>
+    <%# <p><%= review.rating %> <%#</p> %>
+
+
+<% if user_signed_in? %>
+  <% if review.user_id == current_user.id %>
+        <button type="button" class="btn btn-light"><%= sanitize link_to 'Edit',  edit_resturant_review_path(review.resturant, review) %></button> |
+        <button type="button" class="btn btn-light"><%=  link_to 'Delete',  resturant_review_path(review.resturant, review), method: :delete, data: {confirm: "Are you sure?"} %></button> 
+    <% end %>
+<% end %>
+</div>

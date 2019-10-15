@@ -1,0 +1,11 @@
+
+ 
+<% if user_signed_in? %>
+    <h1>New Resturant</h1>
+    <%= render 'form', resturant: @resturant %>
+    <button type="button" class="btn btn-light"><%= sanitize link_to 'Back', resturants_path %></button>
+<% else %>
+    <button type="button" class="btn btn-light"><%= sanitize link_to 'BACK: Try Again Next Time', resturants_path %></button>
+<% end %>
+
+

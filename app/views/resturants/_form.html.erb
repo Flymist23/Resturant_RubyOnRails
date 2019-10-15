@@ -1,0 +1,32 @@
+
+<%# used in edit, new %>
+<% if user_signed_in? %>
+  <%= simple_form_for(@resturant) do |f| %>
+    <%= f.error_notification %>
+    <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+    <div class="form-inputs">
+      <%= f.input :name,
+        required: true,
+        autofocus: true
+       %>
+      <%= f.input :description, 
+        required: true
+      %>
+      
+      <%= f.input :location,
+        required: true
+      %>
+
+      <%= f.input :phone %>
+      <%= f.input :email %>
+    </div>
+
+    <div class="form-actions">
+      <button type="button" class="btn btn-light"><%= f.button :submit %></button>
+    </div>
+  <% end %>
+<% else %>
+  <h1>Nice Try</h1>
+<% end %>
+

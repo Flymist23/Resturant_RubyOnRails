@@ -1,0 +1,45 @@
+
+<p>
+  <h1><%= sanitize @resturant.name %></h1>
+</p>
+
+<p>
+  <h4><%= sanitize @resturant.description %></h4>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= sanitize @resturant.location %>
+</p>
+<%# don't use 'raw' or "html_safe" unless you want to take extra steps to sanatize %>
+<%# add functionality for phone link %>
+<p>
+  <strong>Phone:</strong>
+  <%= sanitize @resturant.phone %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= sanitize @resturant.email %>
+</p>
+
+<h3>Reviews:</h3>
+<% if user_signed_in? %>
+    <div>
+    <button type="button" class="btn btn-light"><%= sanitize link_to 'Add Review',  new_resturant_review_path(@resturant) %></button>
+  </div>
+<% end %>
+
+<%# where reviews are rendered %>
+<div >
+  <%= render  @resturant.reviews %>
+</div>
+<%# if user signed in is == user who created review then allow edit | Delete %>
+
+
+
+
+
+
+<%# reviews go here %>
+<%# edit | Delete Review %>
